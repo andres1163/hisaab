@@ -8,6 +8,7 @@ import { DrawdownChart } from "@/components/analytics/drawdown-chart";
 import { DayOfWeekChart } from "@/components/analytics/day-of-week";
 import { HoldingAnalysis } from "@/components/analytics/holding-analysis";
 import { TiltCard } from "@/components/analytics/tilt-card";
+import { TaxReport } from "@/components/analytics/tax-report";
 import { Button } from "@/components/ui/button";
 import {
   computeAdvancedMetrics,
@@ -120,6 +121,9 @@ export default function AnalyticsPage() {
       </div>
 
       <HoldingAnalysis data={holdingPeriod} />
+
+      {/* Tax Report */}
+      <TaxReport trades={allTrades} />
 
       {/* Monte Carlo */}
       <Card>

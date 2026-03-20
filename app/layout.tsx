@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { BottomNav } from "@/components/layout/bottom-nav";
@@ -18,6 +18,19 @@ export const metadata: Metadata = {
   title: "Hisaab | Trading Journal for Indian Traders",
   description:
     "Upload your broker CSV, see your real win rate in 2 minutes. Zero signup, 100% browser-based, open source.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Hisaab",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#2483ff",
 };
 
 export default function RootLayout({

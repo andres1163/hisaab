@@ -30,6 +30,15 @@ import { PageHeader } from "@/components/layout/page-header";
 import { EmptyState } from "@/components/layout/empty-state";
 import { BookOpen } from "lucide-react";
 import { ChevronDown, Search, AlertCircle, Plus } from "lucide-react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 import { StarRating } from "@/components/journal/star-rating";
 
 export default function JournalPage() {
@@ -41,7 +50,9 @@ export default function JournalPage() {
     "all"
   );
   const [showManualEntry, setShowManualEntry] = useState(false);
+  const [page, setPage] = useState(0);
   const debouncedSearch = useDebounce(search);
+  const PAGE_SIZE = 50;
 
   const closed = useMemo(
     () =>
@@ -67,8 +78,9 @@ export default function JournalPage() {
         (t) => !t.notes && (!t.tags || t.tags.length === 0) && !t.rating
       );
     }
+    setPage(0);
     return result;
-  }, [closed, search, filter]);
+  }, [closed, debouncedSearch, filter]);
 
   if (allTrades.length === 0) {
     return (
@@ -170,7 +182,7 @@ export default function JournalPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filtered.map((trade) => {
+                {filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map((trade) => {
                   const pnl = formatPnl(trade.pnl);
                   const isExpanded = expandedId === trade.id;
                   return (
@@ -265,6 +277,63 @@ export default function JournalPage() {
               </TableBody>
             </Table>
           </div>
+
+          {/* Pagination */}
+          {(() => {
+            const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+            if (totalPages <= 1) return null;
+            const pageStart = page * PAGE_SIZE;
+            const pageEnd = Math.min(pageStart + PAGE_SIZE, filtered.length);
+            return (
+              <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+                <p className="text-xs text-muted-foreground">
+                  {pageStart + 1}-{pageEnd} of {filtered.length}
+                </p>
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        onClick={() => page > 0 && setPage(page - 1)}
+                        className={page === 0 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        text=""
+                      />
+                    </PaginationItem>
+                    {Array.from({ length: totalPages }, (_, i) => i)
+                      .filter((i) => i === 0 || i === totalPages - 1 || Math.abs(i - page) <= 1)
+                      .map((i, idx, arr) => {
+                        const items = [];
+                        if (idx > 0 && i - arr[idx - 1] > 1) {
+                          items.push(
+                            <PaginationItem key={`e-${i}`}>
+                              <PaginationEllipsis />
+                            </PaginationItem>
+                          );
+                        }
+                        items.push(
+                          <PaginationItem key={i}>
+                            <PaginationLink
+                              isActive={i === page}
+                              onClick={() => setPage(i)}
+                              className="cursor-pointer text-xs"
+                            >
+                              {i + 1}
+                            </PaginationLink>
+                          </PaginationItem>
+                        );
+                        return items;
+                      })}
+                    <PaginationItem>
+                      <PaginationNext
+                        onClick={() => page < totalPages - 1 && setPage(page + 1)}
+                        className={page >= totalPages - 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                        text=""
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
+            );
+          })()}
         </CardContent>
       </Card>
 

@@ -2,7 +2,7 @@ import type { MatchedTradeRecord } from "@/lib/types";
 import { db } from "@/lib/storage/db";
 
 /** Sanitize a string for CSV to prevent formula injection in spreadsheets. */
-function sanitizeCSVCell(value: string): string {
+export function sanitizeCSVCell(value: string): string {
   let s = value.replace(/"/g, '""').replace(/\n/g, " ");
   if (/^[=+\-@\t\r]/.test(s)) {
     s = "'" + s;
