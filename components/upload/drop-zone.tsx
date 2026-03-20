@@ -4,6 +4,7 @@ import { useState, useCallback, useRef } from "react";
 import { Upload, FileSpreadsheet, AlertCircle, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { BrokerStrip } from "@/components/brokers/broker-logos";
 import { parseFile } from "@/lib/parsers";
 import { matchTradesFIFO } from "@/lib/matching/fifo";
 import { storeTrades, storeMatchedTrades, storeImport } from "@/hooks/use-trades";
@@ -135,12 +136,8 @@ export function DropZone({ onComplete }: DropZoneProps) {
                 Supports Zerodha & Groww exports. Click to browse.
               </p>
             </div>
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {["Zerodha / Kite", "Groww", "Upstox", "Angel One"].map((b) => (
-                <span key={b} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                  {b}
-                </span>
-              ))}
+            <div className="mt-2">
+              <BrokerStrip />
             </div>
           </>
         )}
