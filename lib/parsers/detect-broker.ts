@@ -3,6 +3,8 @@ import type { Broker } from "@/lib/types";
 const BROKER_SIGNATURES: Record<string, string[]> = {
   zerodha: ["trade_date", "tradingsymbol", "exchange", "quantity", "price"],
   groww: ["symbol", "trade type", "quantity", "trade price"],
+  upstox: ["exchange", "symbol", "token", "trade_type", "quantity"],
+  angel: ["trade date", "script name", "buy/sell", "quantity"],
 };
 
 export function detectBroker(headers: string[]): Broker | null {

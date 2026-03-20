@@ -4,6 +4,8 @@ import type { ParseResult } from "@/lib/types";
 import { detectBroker, getFileExtension } from "./detect-broker";
 import { parseZerodha } from "./zerodha";
 import { parseGroww } from "./groww";
+import { parseUpstox } from "./upstox";
+import { parseAngel } from "./angel";
 
 export async function parseFile(file: File): Promise<ParseResult> {
   const ext = getFileExtension(file.name);
@@ -39,9 +41,9 @@ async function parseCSV(file: File, importId: string): Promise<ParseResult> {
   const headers = firstLine.split(",").map((h) => h.trim().replace(/"/g, ""));
   const broker = detectBroker(headers);
 
-  if (broker === "zerodha") {
-    return parseZerodha(text, file.name, importId);
-  }
+  if (broker === "zerodha") return parseZerodha(text, file.name, importId);
+  if (broker === "upstox") return parseUpstox(text, file.name, importId);
+  if (broker === "angel") return parseAngel(text, file.name, importId);
 
   return {
     trades: [],
@@ -50,7 +52,7 @@ async function parseCSV(file: File, importId: string): Promise<ParseResult> {
         row: 0,
         field: "broker",
         value: headers.join(", "),
-        message: "Could not detect broker from CSV headers. Currently supported: Zerodha, Groww.",
+        message: "Could not detect broker from CSV headers. Supported: Zerodha, Groww, Upstox, Angel One.",
       },
     ],
     meta: {
