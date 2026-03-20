@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useDebounce } from "@/hooks/use-debounce";
 import {
   Table,
   TableBody,
@@ -38,6 +39,7 @@ type SortDir = "asc" | "desc";
 
 export function TradeTable({ trades }: TradeTableProps) {
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search);
   const [sortKey, setSortKey] = useState<SortKey>("exitDate");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(0);
@@ -48,11 +50,11 @@ export function TradeTable({ trades }: TradeTableProps) {
   );
 
   const filtered = useMemo(() => {
-    const q = search.toLowerCase();
+    const q = debouncedSearch.toLowerCase();
     const result = closed.filter((t) => t.symbol.toLowerCase().includes(q));
-    setPage(0); // reset page on search
+    setPage(0);
     return result;
-  }, [closed, search]);
+  }, [closed, debouncedSearch]);
 
   const sorted = useMemo(() => {
     return [...filtered].sort((a, b) => {

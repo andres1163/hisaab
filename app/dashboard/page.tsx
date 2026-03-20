@@ -18,6 +18,13 @@ import { useAnnotationStats } from "@/hooks/use-trades";
 import { StreakWidget } from "@/components/journal/streak-widget";
 import { getAllFYs, getCurrentFY } from "@/lib/utils/fy";
 import { PageHeader } from "@/components/layout/page-header";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Upload, Home } from "lucide-react";
 import Link from "next/link";
@@ -89,17 +96,25 @@ export default function DashboardPage() {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => setShowUpload(!showUpload)}
+          onClick={() => setShowUpload(true)}
         >
           <Upload className="h-4 w-4 mr-1" />
           Import
         </Button>
       </PageHeader>
 
-      {/* Upload area (toggleable) */}
-      {showUpload && (
-        <DropZone onComplete={() => setShowUpload(false)} />
-      )}
+      {/* Import dialog (bottom sheet on mobile) */}
+      <Dialog open={showUpload} onOpenChange={setShowUpload}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Import Trades</DialogTitle>
+            <DialogDescription>
+              Upload your broker tradebook CSV or XLSX file.
+            </DialogDescription>
+          </DialogHeader>
+          <DropZone onComplete={() => setShowUpload(false)} />
+        </DialogContent>
+      </Dialog>
 
       {/* KPIs + Streak */}
       <KPICards kpis={kpis} />

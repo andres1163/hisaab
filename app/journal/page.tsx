@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useMatchedTrades, useAnnotationStats } from "@/hooks/use-trades";
+import { useDebounce } from "@/hooks/use-debounce";
 import { TradeAnnotation } from "@/components/journal/trade-annotation";
 import { ManualEntryForm } from "@/components/journal/manual-entry-form";
 import {
@@ -38,6 +39,7 @@ export default function JournalPage() {
     "all"
   );
   const [showManualEntry, setShowManualEntry] = useState(false);
+  const debouncedSearch = useDebounce(search);
 
   const closed = useMemo(
     () =>
@@ -49,8 +51,8 @@ export default function JournalPage() {
 
   const filtered = useMemo(() => {
     let result = closed;
-    if (search) {
-      const q = search.toLowerCase();
+    if (debouncedSearch) {
+      const q = debouncedSearch.toLowerCase();
       result = result.filter((t) => t.symbol.toLowerCase().includes(q));
     }
     if (filter === "reviewed") {
