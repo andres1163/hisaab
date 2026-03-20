@@ -44,7 +44,7 @@ export function KPICards({ kpis }: KPICardsProps) {
           <CardTitle className="text-xs font-medium text-muted-foreground">
             Win Rate
           </CardTitle>
-          <Target className="h-4 w-4 text-muted-foreground" />
+          <Target className="h-4 w-4 text-primary" />
         </CardHeader>
         <CardContent>
           <div className="text-xl font-bold">
@@ -61,7 +61,7 @@ export function KPICards({ kpis }: KPICardsProps) {
           <CardTitle className="text-xs font-medium text-muted-foreground">
             Total Trades
           </CardTitle>
-          <BarChart3 className="h-4 w-4 text-muted-foreground" />
+          <BarChart3 className="h-4 w-4 text-primary" />
         </CardHeader>
         <CardContent>
           <div className="text-xl font-bold">{kpis.totalTrades}</div>
@@ -78,7 +78,7 @@ export function KPICards({ kpis }: KPICardsProps) {
           <CardTitle className="text-xs font-medium text-muted-foreground">
             Profit Factor
           </CardTitle>
-          <Scale className="h-4 w-4 text-muted-foreground" />
+          <Scale className="h-4 w-4 text-primary" />
         </CardHeader>
         <CardContent>
           <div className="text-xl font-bold">

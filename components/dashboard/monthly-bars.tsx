@@ -59,7 +59,7 @@ export function MonthlyBars({ data }: MonthlyBarsProps) {
               {formatted.map((entry, index) => (
                 <Cell
                   key={index}
-                  fill={entry.pnl >= 0 ? "#16a34a" : "#dc2626"}
+                  fill={entry.pnl >= 0 ? "var(--chart-1)" : "var(--destructive)"}
                 />
               ))}
             </Bar>

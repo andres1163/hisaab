@@ -124,8 +124,8 @@ export function DropZone({ onComplete }: DropZoneProps) {
 
         {state.status === "idle" && (
           <>
-            <div className="rounded-full bg-muted p-4">
-              <Upload className="h-8 w-8 text-muted-foreground" />
+            <div className="rounded-full bg-primary/10 p-4">
+              <Upload className="h-8 w-8 text-primary" />
             </div>
             <div>
               <p className="text-lg font-medium">
@@ -136,10 +136,10 @@ export function DropZone({ onComplete }: DropZoneProps) {
               </p>
             </div>
             <div className="flex gap-2 mt-2">
-              <span className="text-xs bg-muted px-2 py-1 rounded">
+              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
                 Zerodha CSV
               </span>
-              <span className="text-xs bg-muted px-2 py-1 rounded">
+              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
                 Groww XLSX
               </span>
             </div>
@@ -148,8 +148,8 @@ export function DropZone({ onComplete }: DropZoneProps) {
 
         {state.status === "parsing" && (
           <>
-            <div className="rounded-full bg-muted p-4 animate-pulse">
-              <FileSpreadsheet className="h-8 w-8 text-muted-foreground" />
+            <div className="rounded-full bg-primary/10 p-4 animate-pulse">
+              <FileSpreadsheet className="h-8 w-8 text-primary" />
             </div>
             <p className="text-sm text-muted-foreground">
               Parsing {state.fileName}...
@@ -159,11 +159,11 @@ export function DropZone({ onComplete }: DropZoneProps) {
 
         {state.status === "success" && (
           <>
-            <div className="rounded-full bg-green-100 dark:bg-green-900/30 p-4">
-              <Check className="h-8 w-8 text-green-600" />
+            <div className="rounded-full bg-primary/10 p-4">
+              <Check className="h-8 w-8 text-primary" />
             </div>
             <div>
-              <p className="text-lg font-medium text-green-600">
+              <p className="text-lg font-medium text-primary">
                 {state.addedCount} trades imported!
               </p>
               {state.result.errors.length > 0 && (

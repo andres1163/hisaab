@@ -74,7 +74,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Link href="/" className="text-xl font-bold hover:opacity-80">
+          <Link href="/" className="text-xl font-bold text-primary hover:opacity-80">
             Hisaab
           </Link>
           <Select

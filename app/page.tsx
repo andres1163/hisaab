@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { DropZone } from "@/components/upload/drop-zone";
 import { Button } from "@/components/ui/button";
 import { useTradeCount } from "@/hooks/use-trades";
-import { BarChart3, ArrowRight } from "lucide-react";
+import { BarChart3, ArrowRight, Shield, Globe, Github } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -16,11 +16,15 @@ export default function Home() {
       <div className="w-full max-w-xl space-y-8">
         {/* Hero */}
         <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Open source trading journal
+          </div>
           <h1 className="text-4xl font-bold tracking-tight">
-            Hisaab
+            <span className="text-primary">Hisaab</span>
           </h1>
           <p className="text-xl text-muted-foreground">
-            See your real win rate in 2 minutes
+            See your real win rate in <span className="text-primary font-semibold">2 minutes</span>
           </p>
           <p className="text-sm text-muted-foreground max-w-md mx-auto">
             Upload your broker tradebook. Get instant P&L analytics.
@@ -47,9 +51,18 @@ export default function Home() {
 
         {/* Trust signals */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-          <span>100% browser-based</span>
-          <span>No data leaves your device</span>
-          <span>Open source (MIT)</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Shield className="h-3 w-3 text-primary" />
+            100% browser-based
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Globe className="h-3 w-3 text-primary" />
+            No data leaves your device
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Github className="h-3 w-3 text-primary" />
+            Open source (MIT)
+          </span>
         </div>
       </div>
     </div>

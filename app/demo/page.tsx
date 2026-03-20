@@ -56,6 +56,7 @@ export default function DemoPage() {
     <div className="flex flex-col flex-1 items-center justify-center px-4">
       <div className="text-center space-y-3">
         <div className="h-8 w-8 mx-auto rounded-full border-2 border-primary border-t-transparent animate-spin" />
+        <p className="text-xs text-primary font-medium">Hisaab</p>
         <p className="text-sm text-muted-foreground">{status}</p>
       </div>
     </div>

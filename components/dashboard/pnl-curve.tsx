@@ -58,12 +58,12 @@ export function PnlCurve({ data }: PnlCurveProps) {
               <linearGradient id="fillCumulative" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={isPositive ? "#16a34a" : "#dc2626"}
+                  stopColor={isPositive ? "var(--chart-1)" : "var(--destructive)"}
                   stopOpacity={0.3}
                 />
                 <stop
                   offset="95%"
-                  stopColor={isPositive ? "#16a34a" : "#dc2626"}
+                  stopColor={isPositive ? "var(--chart-1)" : "var(--destructive)"}
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -71,7 +71,7 @@ export function PnlCurve({ data }: PnlCurveProps) {
             <Area
               dataKey="cumulative"
               type="monotone"
-              stroke={isPositive ? "#16a34a" : "#dc2626"}
+              stroke={isPositive ? "var(--chart-1)" : "var(--destructive)"}
               fill="url(#fillCumulative)"
               strokeWidth={2}
             />
