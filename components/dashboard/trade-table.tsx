@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useDebounce } from "@/hooks/use-debounce";
 import {
   Table,
@@ -51,10 +51,13 @@ export function TradeTable({ trades }: TradeTableProps) {
 
   const filtered = useMemo(() => {
     const q = debouncedSearch.toLowerCase();
-    const result = closed.filter((t) => t.symbol.toLowerCase().includes(q));
-    setPage(0);
-    return result;
+    return closed.filter((t) => t.symbol.toLowerCase().includes(q));
   }, [closed, debouncedSearch]);
+
+  // Reset page when search changes
+  useEffect(() => {
+    setPage(0);
+  }, [debouncedSearch]);
 
   const sorted = useMemo(() => {
     return [...filtered].sort((a, b) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useMatchedTrades, useAnnotationStats } from "@/hooks/use-trades";
 import { useDebounce } from "@/hooks/use-debounce";
 import { TradeAnnotation } from "@/components/journal/trade-annotation";
@@ -78,9 +78,13 @@ export default function JournalPage() {
         (t) => !t.notes && (!t.tags || t.tags.length === 0) && !t.rating
       );
     }
-    setPage(0);
     return result;
   }, [closed, debouncedSearch, filter]);
+
+  // Reset page when filters change
+  useEffect(() => {
+    setPage(0);
+  }, [debouncedSearch, filter]);
 
   if (allTrades.length === 0) {
     return (
