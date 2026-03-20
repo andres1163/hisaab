@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useRef, useEffect } from "react";
-import { useMatchedTrades } from "@/hooks/use-trades";
+import { useMatchedTradesWithLoading } from "@/hooks/use-trades";
 import { PageHeader } from "@/components/layout/page-header";
 import { AdvancedMetricsCard } from "@/components/analytics/advanced-metrics";
 import { DrawdownChart } from "@/components/analytics/drawdown-chart";
@@ -31,9 +31,10 @@ import { formatINR } from "@/lib/utils/format";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetisAnalyticsCTA } from "@/components/metis/cta-banner";
 import { EmptyState } from "@/components/layout/empty-state";
+import { PageLoading } from "@/components/layout/page-loading";
 
 export default function AnalyticsPage() {
-  const allTrades = useMatchedTrades();
+  const { data: allTrades, isLoading } = useMatchedTradesWithLoading();
   const [monteCarloResult, setMonteCarloResult] = useState<ReturnType<
     typeof runMonteCarlo
   > | null>(null);
@@ -84,6 +85,8 @@ export default function AnalyticsPage() {
     const json = await exportAllDataJSON();
     downloadFile(json, `hisaab-backup-${new Date().toISOString().slice(0, 10)}.json`, "application/json");
   }
+
+  if (isLoading) return <PageLoading />;
 
   if (allTrades.length === 0) {
     return (

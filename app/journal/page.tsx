@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { useMatchedTrades, useAnnotationStats } from "@/hooks/use-trades";
+import { useMatchedTradesWithLoading, useAnnotationStats } from "@/hooks/use-trades";
 import { useDebounce } from "@/hooks/use-debounce";
 import { TradeAnnotation } from "@/components/journal/trade-annotation";
 import { ManualEntryForm } from "@/components/journal/manual-entry-form";
@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/dialog";
 import { PageHeader } from "@/components/layout/page-header";
 import { EmptyState } from "@/components/layout/empty-state";
+import { PageLoading } from "@/components/layout/page-loading";
 import { BookOpen } from "lucide-react";
 import { ChevronDown, Search, AlertCircle, Plus } from "lucide-react";
 import {
@@ -42,7 +43,7 @@ import {
 import { StarRating } from "@/components/journal/star-rating";
 
 export default function JournalPage() {
-  const allTrades = useMatchedTrades();
+  const { data: allTrades, isLoading } = useMatchedTradesWithLoading();
   const stats = useAnnotationStats();
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -85,6 +86,8 @@ export default function JournalPage() {
   useEffect(() => {
     setPage(0);
   }, [debouncedSearch, filter]);
+
+  if (isLoading) return <PageLoading />;
 
   if (allTrades.length === 0) {
     return (

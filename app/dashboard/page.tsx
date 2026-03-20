@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useMatchedTrades } from "@/hooks/use-trades";
+import { useMatchedTradesWithLoading } from "@/hooks/use-trades";
 import { KPICards } from "@/components/dashboard/kpi-cards";
 import { PnlCurve } from "@/components/dashboard/pnl-curve";
 import { MonthlyBars } from "@/components/dashboard/monthly-bars";
@@ -29,9 +29,10 @@ import { Button } from "@/components/ui/button";
 import { Upload, Home, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import { EmptyState } from "@/components/layout/empty-state";
+import { PageLoading } from "@/components/layout/page-loading";
 
 export default function DashboardPage() {
-  const allTrades = useMatchedTrades();
+  const { data: allTrades, isLoading } = useMatchedTradesWithLoading();
   const fys = useMemo(() => getAllFYs(allTrades), [allTrades]);
   const [selectedFY, setSelectedFY] = useState<string>("");
   const [showUpload, setShowUpload] = useState(false);
@@ -60,6 +61,8 @@ export default function DashboardPage() {
     [filteredTrades]
   );
   const annotationStats = useAnnotationStats();
+
+  if (isLoading) return <PageLoading />;
 
   if (allTrades.length === 0) {
     return (

@@ -29,6 +29,28 @@ export function useMatchedTrades(financialYear?: string) {
   return trades ?? [];
 }
 
+/**
+ * Returns { data, isLoading } so pages can distinguish
+ * "still loading from IndexedDB" from "genuinely empty".
+ */
+export function useMatchedTradesWithLoading(financialYear?: string) {
+  const trades = useLiveQuery(async () => {
+    if (financialYear) {
+      return db.matchedTrades
+        .where("financialYear")
+        .equals(financialYear)
+        .toArray();
+    }
+    return db.matchedTrades.toArray();
+  }, [financialYear]);
+
+  // useLiveQuery returns undefined while loading, then the actual array
+  return {
+    data: trades ?? [],
+    isLoading: trades === undefined,
+  };
+}
+
 export function useImports() {
   const imports = useLiveQuery(async () => {
     return db.imports.orderBy("importedAt").reverse().toArray();

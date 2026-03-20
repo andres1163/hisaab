@@ -175,13 +175,17 @@ export function DropZone({ onComplete }: DropZoneProps) {
             </div>
             <div>
               <p className="text-lg font-medium text-primary">
-                {state.addedCount} trades imported!
+                {state.addedCount > 0
+                  ? `${state.addedCount} new trades added`
+                  : "No new trades found"}
               </p>
-              {state.result.errors.length > 0 && (
-                <p className="text-sm text-muted-foreground mt-1">
-                  {state.result.errors.length} rows skipped
-                </p>
-              )}
+              <p className="text-sm text-muted-foreground mt-1">
+                {state.result.meta.parsedRows} total in file
+                {state.result.meta.parsedRows - state.addedCount > 0 &&
+                  `, ${state.result.meta.parsedRows - state.addedCount} duplicates skipped`}
+                {state.result.errors.length > 0 &&
+                  `, ${state.result.errors.length} rows with errors`}
+              </p>
             </div>
           </>
         )}
