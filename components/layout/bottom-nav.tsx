@@ -10,6 +10,7 @@ import {
   CalendarDays,
   Activity,
 } from "lucide-react";
+import { PoweredByMetis } from "@/components/metis/cta-banner";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home", icon: Home },
@@ -65,6 +66,8 @@ export function BottomNav() {
           );
         })}
       </div>
+
+      <PoweredByMetis />
 
       {/* Home indicator safe area for iOS */}
       <div className="h-[env(safe-area-inset-bottom)]" />

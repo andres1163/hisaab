@@ -27,6 +27,7 @@ import {
 import { Download, FileJson, FileSpreadsheet } from "lucide-react";
 import { formatINR } from "@/lib/utils/format";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MetisAnalyticsCTA } from "@/components/metis/cta-banner";
 
 export default function AnalyticsPage() {
   const allTrades = useMatchedTrades();
@@ -165,6 +166,9 @@ export default function AnalyticsPage() {
           </CardContent>
         )}
       </Card>
+
+      {/* Metis CTA */}
+      <MetisAnalyticsCTA />
     </div>
   );
 }
