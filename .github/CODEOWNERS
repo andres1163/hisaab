@@ -1,0 +1,8 @@
+# Default owner for everything
+* @Devansh-365
+
+# Broker parsers - maintainer must review
+lib/parsers/ @Devansh-365
+
+# Core matching engine - maintainer must review
+lib/matching/ @Devansh-365

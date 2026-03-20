@@ -4,6 +4,10 @@
 
 # Hisaab
 
+[![CI](https://github.com/Devansh-365/hisaab/actions/workflows/ci.yml/badge.svg)](https://github.com/Devansh-365/hisaab/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 **Your trades. Your data. Your edge.**
 
 A zero-friction trading journal for Indian traders.
