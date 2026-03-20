@@ -7,6 +7,7 @@ import { useTradeCount } from "@/hooks/use-trades";
 import { BarChart3, ArrowRight, Shield, Globe, Github } from "lucide-react";
 import Link from "next/link";
 import { MetisTrustSignal } from "@/components/metis/cta-banner";
+import { BrokerStrip } from "@/components/brokers/broker-logos";
 
 export default function Home() {
   const router = useRouter();
@@ -65,6 +66,9 @@ export default function Home() {
             Open source (MIT)
           </span>
         </div>
+
+        {/* Supported brokers */}
+        <BrokerStrip />
 
         {/* Metis ecosystem signal */}
         <MetisTrustSignal />
