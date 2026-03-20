@@ -77,7 +77,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="flex flex-col flex-1 px-4 py-6 max-w-5xl mx-auto w-full space-y-6">
+    <div className="flex flex-col flex-1 px-4 py-6 max-w-7xl mx-auto w-full space-y-6">
       <PageHeader title="Analytics">
         <Button variant="outline" size="sm" onClick={handleExportCSV}>
           <FileSpreadsheet className="h-4 w-4 mr-1" />

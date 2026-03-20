@@ -67,7 +67,7 @@ export default function JournalPage() {
   }, [closed, search, filter]);
 
   return (
-    <div className="flex flex-col flex-1 px-4 py-6 max-w-5xl mx-auto w-full space-y-6">
+    <div className="flex flex-col flex-1 px-4 py-6 max-w-7xl mx-auto w-full space-y-6">
       <PageHeader title="Journal">
         <Button
           variant="outline"
