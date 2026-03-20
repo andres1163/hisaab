@@ -7,6 +7,29 @@ import { parseGroww } from "./groww";
 import { parseUpstox } from "./upstox";
 import { parseAngel } from "./angel";
 
+/** Parse Groww CSV (as opposed to XLSX) by converting to row objects first */
+function parseGrowwCSV(
+  csvText: string,
+  fileName: string,
+  importId: string
+): ParseResult {
+  const parsed = Papa.parse<Record<string, string>>(csvText, {
+    header: true,
+    skipEmptyLines: true,
+  });
+
+  if (parsed.data.length === 0) {
+    return {
+      trades: [],
+      errors: [{ row: 0, field: "file", value: fileName, message: "No data rows found" }],
+      meta: { broker: "groww", fileName, totalRows: 0, parsedRows: 0, skippedRows: 0, dateRange: null },
+    };
+  }
+
+  const headers = Object.keys(parsed.data[0]);
+  return parseGroww(parsed.data, headers, fileName, importId);
+}
+
 export async function parseFile(file: File): Promise<ParseResult> {
   const ext = getFileExtension(file.name);
   const importId = ulid();
@@ -44,6 +67,7 @@ async function parseCSV(file: File, importId: string): Promise<ParseResult> {
   if (broker === "zerodha") return parseZerodha(text, file.name, importId);
   if (broker === "upstox") return parseUpstox(text, file.name, importId);
   if (broker === "angel") return parseAngel(text, file.name, importId);
+  if (broker === "groww") return parseGrowwCSV(text, file.name, importId);
 
   return {
     trades: [],
@@ -52,7 +76,7 @@ async function parseCSV(file: File, importId: string): Promise<ParseResult> {
         row: 0,
         field: "broker",
         value: headers.join(", "),
-        message: "Could not detect broker from CSV headers. Supported: Zerodha, Groww, Upstox, Angel One.",
+        message: "Could not detect broker from CSV headers. Supported: Zerodha (Kite), Groww, Upstox, Angel One.",
       },
     ],
     meta: {
@@ -98,6 +122,30 @@ async function parseXLSX(file: File, importId: string): Promise<ParseResult> {
     return parseGroww(jsonRows, headers, file.name, importId);
   }
 
-  // Try Groww anyway for XLSX since it's the most common XLSX source
+  // For undetected XLSX files, try Groww parser as fallback
+  // since Groww is the most common XLSX source for Indian traders
+  if (!broker) {
+    const result = parseGroww(jsonRows, headers, file.name, importId);
+    if (result.trades.length > 0) return result;
+
+    return {
+      trades: [],
+      errors: [{
+        row: 0,
+        field: "broker",
+        value: headers.slice(0, 5).join(", "),
+        message: "Could not detect broker from XLSX headers. Supported: Groww, Zerodha, Upstox, Angel One.",
+      }],
+      meta: { broker: "unknown", fileName: file.name, totalRows: jsonRows.length, parsedRows: 0, skippedRows: 0, dateRange: null },
+    };
+  }
+
+  // Handle other brokers that may export XLSX
+  // Convert XLSX rows back through the appropriate parser
+  const csvText = Papa.unparse(jsonRows);
+  if (broker === "zerodha") return parseZerodha(csvText, file.name, importId);
+  if (broker === "upstox") return parseUpstox(csvText, file.name, importId);
+  if (broker === "angel") return parseAngel(csvText, file.name, importId);
+
   return parseGroww(jsonRows, headers, file.name, importId);
 }

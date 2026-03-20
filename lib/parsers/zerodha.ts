@@ -5,6 +5,7 @@ import { parseTradeDate } from "@/lib/utils/dates";
 import { getFY } from "@/lib/utils/fy";
 
 interface ZerodhaRow {
+  [key: string]: string | undefined;
   trade_date: string;
   tradingsymbol: string;
   exchange: string;
@@ -52,20 +53,29 @@ export function parseZerodha(
 
   for (let i = 0; i < parsed.data.length; i++) {
     const row = parsed.data[i];
-
-    const tradeDate = parseTradeDate(row.trade_date);
+    // Handle Kite column name variants
+    const rawDate =
+      row.trade_date ||
+      row.order_execution_time ||
+      row.date ||
+      "";
+    const tradeDate = parseTradeDate(rawDate);
     if (!tradeDate) {
       errors.push({
         row: i + 2,
         field: "trade_date",
-        value: row.trade_date,
+        value: rawDate,
         message: "Invalid date format",
       });
       continue;
     }
 
-    const quantity = parseInt(row.quantity);
-    const price = parseFloat(row.price);
+    const quantity = parseInt(
+      row.quantity || row.qty || "0"
+    );
+    const price = parseFloat(
+      row.price || row.average_price || "0"
+    );
 
     if (isNaN(quantity) || quantity <= 0) {
       errors.push({
@@ -104,10 +114,10 @@ export function parseZerodha(
     trades.push({
       id: ulid(),
       broker: "zerodha",
-      symbol: row.tradingsymbol?.trim().toUpperCase() ?? "",
+      symbol: (row.tradingsymbol || row.instrument || "").trim().toUpperCase(),
       isin: row.isin?.trim() || undefined,
       exchange: (row.exchange?.trim().toUpperCase() ?? "NSE") as "NSE" | "BSE",
-      segment: detectSegment(row.segment, row.tradingsymbol),
+      segment: detectSegment(row.segment, row.tradingsymbol || row.instrument || ""),
       tradeType: tradeType as "BUY" | "SELL",
       quantity,
       price,

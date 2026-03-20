@@ -135,13 +135,12 @@ export function DropZone({ onComplete }: DropZoneProps) {
                 Supports Zerodha & Groww exports. Click to browse.
               </p>
             </div>
-            <div className="flex gap-2 mt-2">
-              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                Zerodha CSV
-              </span>
-              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                Groww XLSX
-              </span>
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {["Zerodha / Kite", "Groww", "Upstox", "Angel One"].map((b) => (
+                <span key={b} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                  {b}
+                </span>
+              ))}
             </div>
           </>
         )}
