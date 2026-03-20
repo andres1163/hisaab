@@ -13,7 +13,7 @@ No signup. No server. No data leaves your browser.
 
 <br />
 
-[Get Started](#get-started) · [Demo](https://hisaab.dev/demo) · [Why Hisaab](#why)
+[Get Started](#get-started) · [Demo](https://hisaab.trymetis.app/demo) · [Why Hisaab](#why)
 
 <br />
 
@@ -35,7 +35,7 @@ Hisaab removes the friction entirely.
 
 ```
 1. Export your tradebook from Zerodha or Groww
-2. Drop the file on hisaab.dev
+2. Drop the file on hisaab.trymetis.app
 3. See your P&L, win rate, and patterns. Instantly.
 ```
 
