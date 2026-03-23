@@ -200,6 +200,6 @@ MIT. See [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-<sub>Built by <a href="https://github.com/Devansh-365">Devansh Tiwari</a> &nbsp;·&nbsp; Get AI-powered stock analysis at <a href="https://trymetis.app?utm_source=hisaab&utm_medium=readme&utm_content=footer">Metis</a></sub>
+<sub>Built by <a href="https://devanshtiwari.com?utm_source=hisaab&utm_medium=readme">Devansh Tiwari</a> &nbsp;·&nbsp; Get AI-powered stock analysis at <a href="https://trymetis.app?utm_source=hisaab&utm_medium=readme&utm_content=footer">Metis</a></sub>
 
 </div>
