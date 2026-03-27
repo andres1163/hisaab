@@ -2,9 +2,24 @@
  * Parse various date formats from Indian broker CSVs.
  * Returns ISO 8601 string or null if unparseable.
  */
+export function excelSerialToISO(serial: number): string | null {
+  if (serial < 1 || serial > 100000) return null;
+  // Excel epoch: 1900-01-01 with the Lotus 1-2-3 bug (day 60 = Feb 29, 1900 which doesn't exist)
+  const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+  const ms = excelEpoch.getTime() + serial * 86400000;
+  const d = new Date(ms);
+  return isNaN(d.getTime()) ? null : d.toISOString();
+}
+
 export function parseTradeDate(raw: string): string | null {
   const trimmed = raw.trim();
   if (!trimmed) return null;
+
+  // Excel serial number (e.g. 46104)
+  if (/^\d{4,5}$/.test(trimmed)) {
+    const serial = parseInt(trimmed);
+    return excelSerialToISO(serial);
+  }
 
   // ISO format: 2025-03-20
   if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) {

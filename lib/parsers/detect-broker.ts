@@ -22,6 +22,8 @@ const BROKER_SIGNATURES: Record<string, string[][]> = {
   upstox: [
     ["exchange", "symbol", "token", "trade_type", "quantity"],
     ["exchange", "trading_symbol", "trade_type", "quantity", "price"],
+    // Upstox Realized P&L XLSX format
+    ["scrip_name", "symbol", "isin", "qty", "buy_date", "sell_date", "total_pl"],
   ],
   angel: [
     ["trade date", "script name", "buy/sell", "quantity"],

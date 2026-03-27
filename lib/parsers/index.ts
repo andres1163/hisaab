@@ -4,7 +4,7 @@ import type { ParseResult } from "@/lib/types";
 import { detectBroker, getFileExtension } from "./detect-broker";
 import { parseZerodha } from "./zerodha";
 import { parseGroww } from "./groww";
-import { parseUpstox } from "./upstox";
+import { parseUpstox, parseUpstoxPnL } from "./upstox";
 import { parseAngel } from "./angel";
 
 /** Parse Groww CSV (as opposed to XLSX) by converting to row objects first */
@@ -97,6 +97,33 @@ async function parseXLSX(file: File, importId: string): Promise<ParseResult> {
   const workbook = XLSX.read(buffer);
   const sheetName = workbook.SheetNames[0];
   const sheet = workbook.Sheets[sheetName];
+
+  // --- Detect Upstox Realized P&L format (header row is NOT row 0) ---
+  const rawRows = XLSX.utils.sheet_to_json<string[]>(sheet, { header: 1, defval: "" });
+  const upstoxPnLHeaderIdx = rawRows.findIndex((row) => {
+    const normalized = row.map((c) => String(c).trim().toLowerCase().replace(/\s+/g, "_"));
+    return normalized.includes("scrip_name") && normalized.includes("buy_date") && normalized.includes("sell_date");
+  });
+
+  if (upstoxPnLHeaderIdx >= 0) {
+    const headerRow = rawRows[upstoxPnLHeaderIdx].map((c) =>
+      String(c).trim().toLowerCase().replace(/\s+/g, "_")
+    );
+    const dataRows: Record<string, string>[] = [];
+    for (let i = upstoxPnLHeaderIdx + 1; i < rawRows.length; i++) {
+      const row = rawRows[i];
+      // skip empty rows
+      if (!row || row.every((c) => String(c).trim() === "")) continue;
+      const obj: Record<string, string> = {};
+      for (let j = 0; j < headerRow.length; j++) {
+        obj[headerRow[j]] = String(row[j] ?? "");
+      }
+      dataRows.push(obj);
+    }
+    return parseUpstoxPnL(dataRows, file.name, importId);
+  }
+
+  // --- Standard XLSX parsing (header in row 0) ---
   const jsonRows = XLSX.utils.sheet_to_json<Record<string, string>>(sheet, {
     defval: "",
   });
