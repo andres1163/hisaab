@@ -1,5 +1,5 @@
 {
-  "name": "Hisaab",
+  "name": "Hisaab - Trading Journal",
   "short_name": "Hisaab",
   "description": "Trading journal for Indian traders. Upload CSV, see your win rate.",
   "start_url": "/",
@@ -7,12 +7,19 @@
   "background_color": "#f8fafc",
   "theme_color": "#2483ff",
   "orientation": "portrait-primary",
+  "categories": ["finance", "productivity"],
   "icons": [
     {
       "src": "/icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
   ]
 }

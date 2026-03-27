@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="96" fill="#2483ff"/>
-  <text x="256" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="240" font-weight="700" fill="white">H</text>
+  <!-- Spine -->
+  <rect x="112" y="96" width="56" height="320" rx="28" fill="white" fill-opacity="0.4"/>
+  <!-- Book body -->
+  <rect x="148" y="96" width="252" height="320" rx="16" fill="white"/>
+  <!-- Lines -->
+  <rect x="192" y="168" width="160" height="14" rx="7" fill="#2483ff" fill-opacity="0.45"/>
+  <rect x="192" y="216" width="120" height="14" rx="7" fill="#2483ff" fill-opacity="0.3"/>
+  <rect x="192" y="264" width="160" height="14" rx="7" fill="#2483ff" fill-opacity="0.45"/>
+  <rect x="192" y="312" width="100" height="14" rx="7" fill="#2483ff" fill-opacity="0.3"/>
+  <!-- Bookmark ribbon -->
+  <rect x="332" y="96" width="32" height="80" rx="4" fill="#f97316"/>
+  <polygon points="332,176 348,160 364,176" fill="#f97316"/>
 </svg>
