@@ -21,25 +21,23 @@ export function PageHeader({ title, children }: PageHeaderProps) {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-30 -mx-4 px-4 py-3 bg-background/80 backdrop-blur-xl border-b border-border/50">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-30 -mx-4 px-4 py-2 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <div className="flex items-center justify-between gap-2">
+        {/* Mobile: page title only. Desktop: logo + nav */}
+        <div className="flex items-center gap-3 min-w-0">
           <Link
             href="/"
-            className="text-xl font-bold text-primary hover:opacity-80 transition-opacity"
+            className="hidden md:block text-lg font-bold text-primary hover:opacity-80 transition-opacity shrink-0"
           >
             Hisaab
           </Link>
+
           {title && (
-            <>
-              <span className="text-muted-foreground/40 md:hidden">/</span>
-              <h1 className="text-sm font-semibold text-foreground md:hidden">
-                {title}
-              </h1>
-            </>
+            <h1 className="text-base font-semibold text-foreground truncate md:hidden">
+              {title}
+            </h1>
           )}
 
-          {/* Desktop nav links */}
           <nav className="hidden md:flex items-center gap-1 ml-2">
             {NAV_LINKS.map(({ href, label }) => {
               const isActive = pathname.startsWith(href);
@@ -60,7 +58,8 @@ export function PageHeader({ title, children }: PageHeaderProps) {
             })}
           </nav>
         </div>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-1.5 shrink-0">
           {children}
           <ThemeToggle />
         </div>
