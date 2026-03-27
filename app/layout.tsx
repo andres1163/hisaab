@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import "./globals.css";
 
 const SITE_URL = "https://hisaab.trymetis.app";
@@ -97,13 +98,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
-        <JsonLd />
-        {children}
-        <BottomNav />
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <JsonLd />
+          {children}
+          <BottomNav />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

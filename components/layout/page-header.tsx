@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 interface PageHeaderProps {
   title?: string;
@@ -59,9 +60,10 @@ export function PageHeader({ title, children }: PageHeaderProps) {
             })}
           </nav>
         </div>
-        {children && (
-          <div className="flex items-center gap-2">{children}</div>
-        )}
+        <div className="flex items-center gap-2">
+          {children}
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

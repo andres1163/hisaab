@@ -139,7 +139,7 @@ Open [localhost:3000](http://localhost:3000) and drop a sample CSV from `public/
 - [x] PWA with offline support
 - [ ] AI behavioral nudges (client-side pattern detection)
 - [ ] Shareable stats card for social media
-- [ ] Dark mode
+- [x] Dark mode
 
 <br />
 

@@ -8,13 +8,15 @@ import { BarChart3, ArrowRight, Shield, Globe, Github } from "lucide-react";
 import Link from "next/link";
 import { MetisTrustSignal } from "@/components/metis/cta-banner";
 import { BrokerStrip } from "@/components/brokers/broker-logos";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   const router = useRouter();
   const tradeCount = useTradeCount();
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center px-4 py-16">
+    <div className="flex flex-col flex-1 items-center justify-center px-4 py-16 relative">
+      <ThemeToggle className="absolute top-4 right-4" />
       <div className="w-full max-w-xl space-y-8">
         {/* Hero */}
         <div className="text-center space-y-3">
